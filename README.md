@@ -6,9 +6,10 @@ A skill to play youtube
 
 # Install
     sudo apt-get install mplayer
-    mkdir -p ~/.mycroft/third_party_skills/
-    cd ~/.mycroft/third_party_skills/
+    mkdir -p /opt/mycroft/skills
+    cd /opt/mycroft/skills
     git clone https://github.com/augustnmonteiro/mycroft-youtube.git youtube
+    cd youtube
     source ~/.virtualenvs/mycroft/bin/activate
     pip install -r requirements.txt
     ./mycroft.sh restart
