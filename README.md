@@ -13,5 +13,5 @@ A skill to play youtube
     pip install -r requirements.txt
     ./mycroft.sh restart
 
-# Usage
-* youtube <search>
+# Using
+* Say `youtube guns 'n roses don't cry`
