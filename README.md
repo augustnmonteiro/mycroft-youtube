@@ -5,14 +5,14 @@ A skill to play youtube
 * mplayer
 
 # Install
-    sudo apt-get install mplayer
-    mkdir -p /opt/mycroft/skills
-    cd /opt/mycroft/skills
-    git clone https://github.com/augustnmonteiro/mycroft-youtube.git youtube
-    cd youtube
-    source ~/.virtualenvs/mycroft/bin/activate
-    pip install -r requirements.txt
-    ./mycroft.sh restart
+    sudo apt-get install mplayer \
+    mkdir -p /opt/mycroft/skills \
+    cd /opt/mycroft/skills \
+    git clone https://github.com/augustnmonteiro/mycroft-youtube.git youtube \
+    cd youtube \
+    source ~/.virtualenvs/mycroft/bin/activate \
+    pip install -r requirements.txt \
+    ./mycroft.sh restart 
 
 # Using
 * Say `youtube guns 'n roses don't cry`
