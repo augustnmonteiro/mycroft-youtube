@@ -5,6 +5,7 @@ A skill to play youtube
 * mplayer
 
 # Install
+    sudo apt-get install mplayer
     mkdir -p ~/.mycroft/third_party_skills/
     cd ~/.mycroft/third_party_skills/
     git clone https://github.com/augustnmonteiro/mycroft-youtube.git youtube
