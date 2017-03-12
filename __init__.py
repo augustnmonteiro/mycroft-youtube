@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import json
 import subprocess
 
@@ -25,9 +26,6 @@ class YoutubeSkill(MycroftSkill):
             require("YoutubeKeyword").build()
         self.register_intent(youtube, self.youtube)
 
-    @staticmethod
-    def get_url(video):
-        return youtube_dl.YoutubeDL().extract_info('http://www.youtube.com/watch?v=' + video, False).get("formats")[0].get("url")
 
     def search(self, text):
         query = urllib.quote(text)
@@ -35,9 +33,9 @@ class YoutubeSkill(MycroftSkill):
         response = urllib2.urlopen(url)
         html = response.read()
         soup = BeautifulSoup(html)
-        vid = soup.findAll(attrs={'class': 'yt-uix-tile-link'})
-        if vid:
-            return vid[0]['href'].replace("/watch?v=", "")
+        for vid in soup.findAll(attrs={'class':'yt-uix-tile-link'}):
+	            if not vid['href'].startswith(u"https://googleads.g.doubleclick.net/‌​") and not vid['href'].startswith(u"/user")  and not vid['href'].startswith(u"/channel") :
+                      return "http://www.youtube.com/"+vid['href']
 
     def youtube(self, message):
         self.stop()
@@ -45,7 +43,7 @@ class YoutubeSkill(MycroftSkill):
         utterance = utterance.replace(
             message.data.get('YoutubeKeyword'), '')
         vid = self.search(utterance)
-        self.process = subprocess.Popen(["mplayer", self.get_url(vid)])
+        self.process = subprocess.Popen(["mpv",vid] )
 
     def stop(self):
         if self.process:

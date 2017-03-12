@@ -1,1 +1,1 @@
-sudo apt-get install mplayer
+sudo add-apt-repository ppa:mc3man/mpv-tests && sudo apt install mpv
