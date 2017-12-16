@@ -1,1 +1,2 @@
-youtube-dl>=2016.12.20
+requests>=1.1
+python-firebase>=1.2
