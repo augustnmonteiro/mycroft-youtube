@@ -4,7 +4,16 @@ import time
 import urllib
 from os.path import dirname
 
-import urllib2
+try:
+    from urllib.request import urlopen
+except ImportError:
+    from urllib2 import urlopen
+
+try:
+    from urllib import quote 
+except ImportError:
+    from urllib.parse import quote
+    
 from adapt.intent import IntentBuilder
 from bs4 import BeautifulSoup
 from firebase import firebase
@@ -29,7 +38,7 @@ class YoutubeSkill(MycroftSkill):
         self.register_intent(youtube, self.youtube)
 
     def search(self, text):
-        query = urllib.quote(text)
+        query = quote(text)
         url = "https://www.youtube.com/results?search_query=" + query
         response = urllib2.urlopen(url)
         html = response.read()
